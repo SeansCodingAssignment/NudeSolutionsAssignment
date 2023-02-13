@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+code {
+  color: #e01a76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.item {
+  padding-left: 30px !important;
+}
+
+.table-value-input {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0;
+  padding: 0;
+  display: block !important;
+  border: unset;
+}
+
+.table-input-cell {
+  padding: 0 !important;
+}
+
+.clickable-icon {
+  cursor: pointer;
+}
+
+.table-container {
+  max-width: 50%;
+}

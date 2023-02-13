@@ -1,0 +1,53 @@
+<h1 id="tableLabel">Insured Items</h1>
+
+<p *ngIf="!insuredItems"><em>Loading...</em></p>
+
+<div class="table-container">
+  <div class="border border-dark">
+    <table class='table table-borderless' aria-labelledby="tableLabel" *ngIf="groupedItemsMap">
+      <thead>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let kvp of groupedItemsMap | keyvalue">
+          <tr>
+            <td>{{ kvp.key }}</td>
+            <td>${{ kvp.value.sumItemValues() }}</td>
+          </tr>
+          <tr *ngFor="let item of kvp.value.items">
+            <td class="item">{{ item.name }}</td>
+            <td class="item">${{ item.value }} <fa-icon class="clickable-icon" [icon]="faTrash"
+                (click)="deleteItem(item)"></fa-icon></td>
+          </tr>
+        </ng-container>
+        <tr>
+          <td>TOTAL</td>
+          <td>
+            ${{sumItemCategoryTotals()}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <table class='table table-bordered border-dark'>
+    <thead>
+    </thead>
+    <tbody>
+      <tr id="add-item-row">
+        <td class="table-input-cell">
+          <input class="table-value-input form-control-lg" placeholder="Item Name entry" [(ngModel)]="itemName">
+        </td>
+        <td class="table-input-cell">
+          <input class="table-value-input form-control-lg" type="number" placeholder="$3000" [(ngModel)]="itemValue">
+        </td>
+        <td class="table-input-cell">
+          <select class="table-value-input form-control-lg" [(ngModel)]="selectedCategory">
+            <option *ngFor="let category of categories" [ngValue]="category">{{category.name}}</option>
+          </select>
+
+        </td>
+        <td><input type="button" class="btn btn-default table-value-input" value="Add" (click)="addItem()" /></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
